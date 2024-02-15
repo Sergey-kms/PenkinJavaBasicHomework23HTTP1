@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class HttpServer {      // vetka1 DZ23 http
+public class HttpServer {
     private int port;
     private Dispatcher dispatcher;
     private ExecutorService threadPool;
