@@ -1,5 +1,6 @@
 package ru.otus.java.basic.http.server;
 
+import ru.otus.java.basic.http.server.processors.AnimalRequestProcessor;
 import ru.otus.java.basic.http.server.processors.HelloWorldRequestProcessor;
 import ru.otus.java.basic.http.server.processors.OperationAddRequestProcessor;
 import ru.otus.java.basic.http.server.processors.RequestProcessor;
@@ -16,9 +17,10 @@ public class Dispatcher {
 
     public Dispatcher() {
         this.router = new HashMap<>();
-        this.router.put("/add", new OperationAddRequestProcessor());         // /GET /add => OperationAddRequestProcessor
-        this.router.put("/hello_world", new HelloWorldRequestProcessor());   // /GET /hello_world => HelloWorldRequestProcessor
+        this.router.put("/add", new OperationAddRequestProcessor());
+        this.router.put("/hello_world", new HelloWorldRequestProcessor());
         this.unknownRequestProcessor = new UnknownRequestProcessor();
+        this.router.put("/animal", new AnimalRequestProcessor());
     }
 
     public void execute(HttpRequest httpRequest, OutputStream output) throws IOException {
