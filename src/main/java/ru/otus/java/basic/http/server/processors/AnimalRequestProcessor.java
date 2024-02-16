@@ -15,7 +15,7 @@ import ru.otus.java.basic.http.server.Horse;
 import ru.otus.java.basic.http.server.HttpRequest;
 
 public class AnimalRequestProcessor implements RequestProcessor{
-    private Gson gson;
+    private Gson gson = new Gson();
     private List<Animal> animal = new ArrayList<>();
 
     public AnimalRequestProcessor() {
@@ -30,7 +30,6 @@ public class AnimalRequestProcessor implements RequestProcessor{
 
     @Override
     public void execute(HttpRequest httpRequest, OutputStream output) throws IOException {
-        gson = new Gson();
         String response = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n" +  gson.toJson(animal);
         System.out.println(gson.toJson(animal));
         output.write(response.getBytes(StandardCharsets.UTF_8));
